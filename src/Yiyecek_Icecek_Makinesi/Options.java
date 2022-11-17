@@ -2,44 +2,56 @@ package Yiyecek_Icecek_Makinesi;
 
 import java.util.Scanner;
 
-/*
-Urun urun = new Urun();
 
-1) Kullanıcı ürünleri göstermeliyiz. ----> Urun clasın da bir obj. toString()
-2) Scanner --> Scanner clasından bir obj create ediniz.
-3) Loop --> Do-While Loop --> kullanıcı 1-7 rakamları arasında bir seçim yapmalı ve eğer girmiş olduğu rakam
-1 den küçük ve ya 7 den büyük ise döngü devam etmeli ve kullanıcı 1-7 arasında bir seçim yapmaya force edilmeli.
-4) 0 a basarak ta menuden cıkabilmeli. --> Yine Bekleriz... Yazısını konsola yazdıralım....
-5) Kullanıcıdan productNum (1-7 arasında rakam {Kullanıcı 1 rakamı seçerse, Kraker, 2 rakamını seçerse cips etc.... }) --> switch-case yapısı kurmalıyım...
-6) switch benden ProductNum ve alınan bu productNum a göre ilgili ürünün price ı alınmalı. urun.getKraker(), urun.getCips(), urun.getCay(), getCocaCola() etc....
-(price set edebilmek için ben price ın setPrice() metodunu kullanmalıyım...)
-7) return olarak bana price dönmeli. return getPrice() (double)
-
- */
 public class Options {
 
-    public double select(Urun urun) {
-        System.out.println(urun.toString());
+    // ***
+    /*
+    Urun urun = new Urun();
+
+    1) Kullanıcı ürünleri göstermeliyiz. ----> Urun clasın da bir obj. toString()
+    2) Scanner --> Scanner clasından bir obj create ediniz. [productNum a set edilmeli. setProductNum()]
+    3) Loop --> Do-While Loop --> kullanıcı 0-7 rakamları arasında bir seçim yapmalı ve eğer girmiş olduğu rakam
+    1 den küçük ve ya 7 den büyük ise döngü devam etmeli ve kullanıcı 1-7 arasında bir seçim yapmaya force edilmeli.
+    4) 0 a basarak ta menuden cıkabilmeli. --> Yine Bekleriz... Yazısını konsola yazdıralım....
+    5) Kullanıcıdan productNum (1-7 arasında rakam {Kullanıcı 1 rakamı seçerse, Kraker, 2 rakamını seçerse cips etc.... }) --> switch-case yapısı kurmalıyım...
+    6) switch benden ProductNum ve alınan bu productNum a göre ilgili ürünün price ı alınmalı. urun.getKraker(), urun.getCips(), urun.getCay(), getCocaCola() etc....
+    (price set edebilmek için ben price ın setPrice() metodunu kullanmalıyım...)
+    7) return olarak bana price dönmeli. return getPrice() (double)
+
+     */
+
+    public double select(Urun urun){
+
+        System.out.println(urun.toString());//Kullanıcıya urunleri gösterdim...
         Scanner scanner = new Scanner(System.in);
 
-
         do {
-            int select;
-            System.out.println("Lutfen seciminizi yapiniz ya da cikis icin 0 basiniz: \n");
-            System.out.println(urun);
+
+            System.out.println("Lütfen 1 ile 7 arasında bir rakam girerek almak istediğiniz ürünü seçiniz...");
+            System.out.println("Cıkıs için '0' ");
             urun.setProductNum(scanner.nextInt());
-
-            if (urun.getProductNum() < 0 || urun.getProductNum() > 7) {
-                System.out.println("lutfen belirtilen aralikta bir rakam giriniz ");
-
+            if (urun.getProductNum()<0 || urun.getProductNum()>7){
+                System.out.println("Lütfen belirtilen aralıkta bir rakam giriniz...");
             }
 
-        } while (urun.getProductNum() < 0 || urun.getProductNum() > 7);
+        }while (urun.getProductNum()<0 || urun.getProductNum()>7);
+/*
+kraker=2.5;
+cips=2.2;
+cocaCola=2.2;
+fanta=2.0;
+su=1.0;
+cay=1.5;
+filtreKahve=1.99;
+productNum;
+price;
+ */
+        switch (urun.getProductNum()){
 
-
-        switch (urun.getProductNum()) {
             case 0:
-                System.out.println("yine bekleriz ...");
+                System.out.println("Yine Bekleriz...");
+                System.exit(0);
                 break;
             case 1:
                 urun.setPrice(urun.getKraker());
@@ -63,30 +75,68 @@ public class Options {
                 urun.setPrice(urun.getFiltreKahve());
                 break;
         }
+
         return urun.getPrice();
     }
 
-    public double balance(double price, double accountBalance, Urun urun) {
+    public double balance(double price, double accountBalance, Urun urun){
+
         double fonlama;
-        while (accountBalance < price) {
+/*
+        try{
+            System.out.println("Hellooooo....."); //RTE --> run time error ....
+        }
+
+
+///handle
+
+        catch (Exception e){
+            System.out.println("Catchhhh.....");
+        }
+
+ */
+
+
+        while (accountBalance<price){
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Yeterli bakiyeniz bulunmamamktadir... Ekleme yapmak istiyor musunuz (Y/N)");
+            System.out.println("Yeterli bakiyeniz bulunmamaktadır... Ekleme Yapmak istiyor musunuz (Y/N)");
             char confirm = scanner.next().toLowerCase().charAt(0);
-            if (confirm == 'n') {
+
+            if (confirm == 'n'){
                 System.out.println("Mevcut Bakiyeniz: " + accountBalance);
                 System.out.println("Yine Bekleriz...");
                 break;
-
-            } else {
-                System.out.println("Ne kadar ekleme yapmak istiyorsunuz?");
+            }else {
+                System.out.println("Ne kadar ekleme yapmak istiyorsunuz...");
                 fonlama = scanner.nextDouble();
                 accountBalance = accountBalance + fonlama;
-                System.out.println("Yeni bakiyeniz: " + accountBalance);
+                System.out.println("Yeni Bakiyeniz: " + accountBalance);
                 price = select(urun);
             }
-        }
 
+        }
         return accountBalance;
     }
 
+
+    public void purchase(double price, double accoutBalance, Urun urun){
+
+        while (accoutBalance>=price){
+
+            accoutBalance = accoutBalance - price;
+            System.out.println("Kalan Bakiye: " + accoutBalance);
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Başka bir ürün almak istiyor musunuz? (Y/N)");
+            char confirm = scanner.next().toLowerCase().charAt(0);
+
+            if (confirm == 'n'){
+                System.out.println("Yine Bekleriz....");
+                break;
+            }else {
+                urun.setPrice(select(urun));
+                accoutBalance = balance(urun.getPrice(),accoutBalance,urun);
+            }
+        }
+    }
 }

@@ -3,15 +3,32 @@ package Yiyecek_Icecek_Makinesi;
 import java.util.Scanner;
 
 public class Urun {
-    private double kraker=2.5;
-	private double cips=2.2;
-	private double cocaCola=2.2;
-	private double fanta=2.0;
-	private double su=1.0;
-	private double cay=1.5;
-	private double filtreKahve=1.99;
+
+		  /*
+          kraker=2.5;
+          cips=2.2;
+          cocaCola=2.2;
+          fanta=2.0;
+          su=1.0;
+          cay=1.5;
+          filtreKahve=1.99;
+          productNum;
+          price;
+           */
+
+	//private access modifier ile --> Encapsulation
+	//fetch  ---- read   ---> get ile
+	//update ---> set ile
+	private double kraker = 2.5;
+	private double cips = 2.2;
+	private double cocaCola = 2.2;
+	private double fanta = 2.0;
+	private double su = 1.0;
+	private double cay = 1.5;
+	private double filtreKahve = 1.99;
 	private int productNum;
 	private double price;
+
 
 	public double getKraker() {
 		return kraker;

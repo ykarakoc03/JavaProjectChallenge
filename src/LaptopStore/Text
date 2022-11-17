@@ -1,0 +1,53 @@
+Bir laptop mağazası için laptop fiyatlarının belirlenebileceği program yazınız.
+Progralama kapsamın da 4 farklı class kullanılacaktır.
+Class:
+Calculation
+Data
+PriceForOneLaptop
+Runner
+Data Class ı Nitelikleri:
+Bulunmamaktadır.
+Data Class ı Metotları:
+ArrayList<String> AllData(int laptopID) → Parametre olarak laptop id lerini alan ve ve bizlere List dönen bir metot oluşturulmalıdır. Bu metot da store da satışı sunulacak laptopların özellikleri eklenmelidir. (Marka, Model, Ram, CPU, Renk)
+
+Calculation Class ı Nitelikleri:
+Bulunmamaktadır.
+Calculation Class ı Metotları:
+getRam(ArrayList<String> arr)--> Parametre olarak bir tane String List i almalıdır. Metot içerisinde laptopların ram güçlerine göre fiyata ekleme yapılmalıdır. Ram güçlerine göre fiyat eklemelerini aşağıdaki tablodan bulabilirsiniz .
+32gb
+300
+16gb
+200
+8gb
+100
+4gb
+50
+getCPU(ArrayList<String> arr) → Parametre olarak bir tane String List i almalıdır. Metot içerisinde laptopların CPU güçlerine göre fiyata ekleme yapılmalıdır. CPU güçlerine göre fiyat eklemelerini aşağıdaki tablodan bulabilirsiniz .
+i3
+200
+i5
+300
+i7
+500
+getColor(ArrayList<String> arr) →  Parametre olarak bir tane String List i almalıdır. Metot içerisinde laptopların renklerine  göre fiyata ekleme yapılmalıdır. Renklerine  göre fiyat eklemelerini aşağıdaki tablodan bulabilirsiniz .
+Red
+400
+Orange
+300
+Silver
+200
+Black
+150
+getSize(ArrayList<String> arr) → Parametre olarak bir tane String List i almalıdır. Metot içerisinde sizeların  göre fiyata ekleme yapılmalıdır. Sizelarıne  göre fiyat eklemelerini aşağıdaki tablodan bulabilirsiniz .
+Mini
+100
+Middle
+200
+Max
+300
+PriceForOneLaptop Nitelikleri:
+Bulunmamaktadır.
+PriceForOneLaptop Metotları:
+getPrice(int laptopID)--> Parametre olarak laptop id sini alan bir metot oluşturunuz. Bu metot bizlere ilgili laptop un fiyatını dönmelidir.
+getDiscount(int num , int discount) → Parametre olarak indirim oranı ve fiyatın alarak son fiyatı bilere return eden bir metot oluşturunuz.
+Main Metodunda bizlere girilen laptop id sine göre laptopun fiyatı ve indirimli oranına göre fiyatını konsolda gösterecek metotları yazınız.
